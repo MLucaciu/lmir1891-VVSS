@@ -30,7 +30,7 @@ public class MainClass {
 	public static void main(String[] args) {
 		BufferedReader in = null;
 		try {
-			RepositoryContact contactRep = new RepositoryContactFile();
+			RepositoryContactFile contactRep = new RepositoryContactFile();
 			RepositoryUserFile userRep = new RepositoryUserFile();
 			RepositoryActivity activityRep = new RepositoryActivityFile(
 					contactRep);
@@ -164,6 +164,7 @@ public class MainClass {
 			Contact c = new Contact(name, adress, telefon);
 
 			contactRep.addContact(c);
+			contactRep.saveContracts();
 
 			System.out.printf("S-a adugat cu succes\n");
 		} catch (IOException e) {

@@ -77,6 +77,7 @@ public class RepositoryContactFile implements RepositoryContact {
 				pw.println(c.toString());
 		}catch (Exception e)
 		{
+			System.out.println(e.toString());
 			return false;
 		}
 		finally{
