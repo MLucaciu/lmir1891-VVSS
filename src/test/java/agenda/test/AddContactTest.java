@@ -71,5 +71,134 @@ public class AddContactTest {
 			else assertTrue(false);
 		else assertTrue(false);
 	}
-	
+
+	@Test
+	public void testCase4()
+	{
+		for(Contact c : rep.getContacts())
+			rep.removeContact(c);
+
+		try {
+			con = new Contact("name", "address1", "0740593842");
+			rep.addContact(con);
+		} catch (InvalidFormatException e) {
+			assertTrue(false);
+		}
+		int n  = rep.count();
+		if (n == 1)
+			if (con.equals(rep.getContacts().get(0))) assertTrue(true);
+			else assertTrue(false);
+		else assertTrue(false);
+	}
+
+	@Test
+	public void testCase5()
+	{
+		for(Contact c : rep.getContacts())
+			rep.removeContact(c);
+
+		try {
+			con = new Contact("", "address1", "+071122334455");
+			rep.addContact(con);
+		} catch (InvalidFormatException e) {
+			assertTrue(false);
+		}
+		int n  = rep.count();
+		if (n == 1)
+			if (con.equals(rep.getContacts().get(0))) assertTrue(true);
+			else assertTrue(false);
+		else assertTrue(false);
+	}
+
+	@Test
+	public void testCase6()
+	{
+		for(Contact c : rep.getContacts())
+			rep.removeContact(c);
+
+		try {
+			con = new Contact("", "", "+071122334455");
+			rep.addContact(con);
+		} catch (InvalidFormatException e) {
+			assertTrue(false);
+		}
+		int n  = rep.count();
+		if (n == 1)
+			if (con.equals(rep.getContacts().get(0))) assertTrue(true);
+			else assertTrue(false);
+		else assertTrue(false);
+	}
+
+	@Test
+	public void testCase7()
+	{
+		try {
+			con = new Contact("name", "address1", "+4071122334455");
+		} catch (InvalidFormatException e) {
+			assertTrue(false);
+		}
+		//int n = rep.count();
+		rep.addContact(con);
+		for(Contact c : rep.getContacts())
+			if (c.equals(con))
+			{
+				assertTrue(true);
+				break;
+			}
+	}
+
+	@Test
+	public void testCase8()
+	{
+		for(Contact c : rep.getContacts())
+			rep.removeContact(c);
+
+		try {
+			con = new Contact("crcc", "ccc", "0740593842");
+			rep.addContact(con);
+		} catch (InvalidFormatException e) {
+			assertTrue(false);
+		}
+		int n  = rep.count();
+		if (n == 1)
+			if (con.equals(rep.getContacts().get(0))) assertTrue(true);
+			else assertTrue(false);
+		else assertTrue(false);
+	}
+
+	@Test
+	public void testCase9()
+	{
+		try {
+			con = new Contact("name", "address1", "+4071122334455");
+		} catch (InvalidFormatException e) {
+			assertTrue(false);
+		}
+		//int n = rep.count();
+		rep.addContact(con);
+		for(Contact c : rep.getContacts())
+			if (c.equals(con))
+			{
+				assertTrue(true);
+				break;
+			}
+	}
+
+	@Test
+	public void testCase10()
+	{
+		try {
+			con = new Contact("Mircea", "", "+43");
+		} catch (InvalidFormatException e) {
+			assertTrue(false);
+		}
+		//int n = rep.count();
+		rep.addContact(con);
+		for(Contact c : rep.getContacts())
+			if (c.equals(con))
+			{
+				assertTrue(true);
+				break;
+			}
+	}
 }
