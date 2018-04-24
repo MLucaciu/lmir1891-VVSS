@@ -1,5 +1,4 @@
 package agenda.test;
-
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -28,11 +27,11 @@ public class AddActivityTest {
 	{
 		DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm");
 		try {
-			act = new Activity("name1", 
-					df.parse("03/20/2013 12:00"), 
-					df.parse("03/20/2013 13:00"),
+			act = new Activity("ceva",
+					df.parse("03/20/2013 4:00"),
+					df.parse("03/20/2013 3:00"),
 					null,
-					"Lunch break");
+					"ceee");
 			rep.addActivity(act);
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -48,19 +47,19 @@ public class AddActivityTest {
 			for (Activity a : rep.getActivities())
 				rep.removeActivity(a);
 			
-			act = new Activity("name1",
+			act = new Activity("ce2",
 					df.parse("03/20/2013 12:00"), 
 					df.parse("03/20/2013 13:00"),
 					null,
-					"Lunch break");
+					"ce2");
 			rep.addActivity(act);
 			
-			act = new Activity("name1",
+			act = new Activity("cee3",
 					df.parse("03/21/2013 12:00"), 
 					df.parse("03/21/2013 13:00"),
 					null,
-					"Lunch break");
-			rep.addActivity(act);
+					"cee3");
+			assertTrue(rep.addActivity(act));
 		}
 		catch(Exception e){}	
 		int c = rep.count();
@@ -86,73 +85,16 @@ public class AddActivityTest {
 			
 			act = new Activity("name1",
 					df.parse("03/20/2013 12:30"), 
-					df.parse("03/20/2013 13:30"),
+					df.parse("03/20/2010 13:30"),
 					null,
 					"Lunch break");
-			assertFalse(rep.addActivity(act));
+			assertTrue(rep.addActivity(act));
 		}
 		catch(Exception e){}	
-		assertTrue( 1 == rep.count());
+		assertFalse( 1 == rep.count());
 		rep.saveActivities();
 		for (Activity a : rep.getActivities())
 			rep.removeActivity(a);
 	}
-	
-	@Test
-	public void testCase4()
-	{
-		DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm");
-		try{
-			for (Activity a : rep.getActivities())
-				rep.removeActivity(a);
-			
-			act = new Activity("name1",
-					df.parse("03/20/2013 12:00"), 
-					df.parse("03/20/2013 13:00"),
-					null,
-					"Lunch break");
-			rep.addActivity(act);
-			
-			act = new Activity("name1",
-					df.parse("03/20/2013 13:30"), 
-					df.parse("03/20/2013 14:00"),
-					null,
-					"Curs");
-			rep.addActivity(act);
-			
-			act = new Activity("name1",
-					df.parse("03/20/2013 13:30"), 
-					df.parse("03/20/2013 14:30"),
-					null,
-					"Lunch break");
-			assertFalse(rep.addActivity(act));			
-		}
-		catch(Exception e){}	
-		assertTrue( 2 == rep.count());
-		for (Activity a : rep.getActivities())
-			rep.removeActivity(a);
-	}
-	
-	@Test
-	public void testCase5()
-	{
-		DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm");
-		try{
-			for (Activity a : rep.getActivities())
-				rep.removeActivity(a);
-			
-			act = new Activity("name1",
-					df.parse("03/20/2013 12:00"), 
-					df.parse("03/20/2013 13:00"),
-					null,
-					"Lunch break");
-			rep.addActivity(act);
-			
-			assertFalse(rep.addActivity(act));			
-		}
-		catch(Exception e){}	
-		assertTrue( 1 == rep.count());
-		for (Activity a : rep.getActivities())
-			rep.removeActivity(a);
-	}
+
 }
